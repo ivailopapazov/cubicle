@@ -13,7 +13,7 @@ router.get('/create', (req, res) => {
 router.post('/create', (req, res) => {
     console.log(req.body);
 
-    res.send('created');
+    res.redirect('/products');
 });
 
 router.get('/details/:productId', (req, res) => {
