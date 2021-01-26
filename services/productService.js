@@ -9,6 +9,10 @@ function getAll() {
     return productsData;
 }
 
+function getOne(id) {
+    return productsData.find(x => x.id == id);
+}
+
 function create(data) {
     let cube = new Cube(
         uniqid(),
@@ -20,7 +24,7 @@ function create(data) {
 
     productsData.push(cube);
 
-    fs.writeFile(__dirname + '/../config/products.json', JSON.stringify(productsData), (err) => {
+    fs.writeFile(path.join(__dirname, '../config/products.json'), JSON.stringify(productsData), (err) => {
         if (err) {
             console.log(err);
             return;
@@ -30,5 +34,6 @@ function create(data) {
 
 module.exports = {
     getAll,
+    getOne,
     create,
 }
