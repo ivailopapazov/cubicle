@@ -1,0 +1,19 @@
+<main>
+  <h1>Attach a new accessory</h1>
+  <div class="form">
+    <h2>{{product.name}}</h2>
+    <img class="cube" src="{{product.imageUrl}}">
+    <form action="/products/{{product._id}}/attach" method="POST">
+      <label for="accessory">Accessories</label>
+      <select id="accessory" name="accessory">
+        {{#each accessories}}
+          <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+      </select>
+      <input type="submit" value="Attach">
+    </form>
+    <h3 class="italic">{{product.description}}
+    </h3>
+    <a class="btn" href="/products">Back</a>
+  </div>
+</main>
