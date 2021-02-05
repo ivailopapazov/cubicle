@@ -1,12 +1,15 @@
 <main>
   <h1>Login Form</h1>
   <div class="form">
-    <form action='/' method="POST">
+    <form action='/auth/login' method="POST">
       <label for="username">Username</label>
       <input type="text" id="username" name="username">
 
       <label for="password">Password</label>
       <input type="password" id="password" name="password">
+      {{#if error}}
+        <span class="error">{{error.message}}</span>
+      {{/if}}
       <input type="submit" value="Login">
     </form>
   </div>
