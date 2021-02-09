@@ -11,6 +11,12 @@
 <body>
     <div class="container">
         <header>
+            {{#if error}}
+            <div id="notifications">
+                <p id="notification-message">{{error.message}}</p>
+            </div>
+            {{/if}}
+
             <ul>
                 <li><img class="logo" src="/images/logo.png"></li>
                 <li><a href="/products">Browse</a></li>

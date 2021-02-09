@@ -1,15 +1,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { SALT_ROUNDS, SECRET } = require('../config');
+const { SECRET } = require('../config');
 const User = require('../models/User');
 
 const register = async ({username, password}) => {
     // TODO: Check if username exists
-
-    let salt = await bcrypt.genSalt(SALT_ROUNDS);
-    let hash = await bcrypt.hash(password, salt);
-
-    const user = new User({username, password: hash});
+    const user = new User({username, password});
 
     return await user.save();
 };

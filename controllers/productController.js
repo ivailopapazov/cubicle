@@ -20,11 +20,13 @@ router.get('/create', isAuthenticated, (req, res) => {
     res.render('create', { title: 'Create' });
 });
 
-router.post('/create', isAuthenticated, validateProduct, (req, res) => {
+router.post('/create', isAuthenticated, (req, res, next) => {
     productService.create(req.body, req.user._id)
         .then(() => res.redirect('/products'))
-        .catch(() => res.status(500).end())
+        // .catch(() => res.status(500).end())
+        .catch(next)
 });
+
 
 router.get('/details/:productId', async (req, res) => {
     let product = await productService.getOneWithAccessories(req.params.productId);
